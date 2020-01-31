@@ -1,0 +1,212 @@
+﻿@using Vacancy.Resources
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Vakansiya</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Sources/assets/css/bootstrap.min.css">
+
+    <!-- External Css -->
+    <link rel="stylesheet" href="~/Sources/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Sources/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="~/Sources/assets/css/et-line.css" />
+    <link rel="stylesheet" href="~/Sources/assets/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="~/Sources/assets/css/plyr.css" />
+    <link rel="stylesheet" href="~/Sources/assets/css/flag.css" />
+    <link rel="stylesheet" href="~/Sources/assets/css/slick.css" />
+    <link rel="stylesheet" href="~/Sources/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Sources/assets/css/jquery.nstSlider.min.css" />
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="~/Sources/css/main.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7CRoboto:300i,400,500" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icon-114x114.png">
+
+</head>
+<body>
+
+    <header class="header-2">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="header-top">
+                        <div class="logo-area">
+                            <a href="@Url.Action("index", "home")"><img src="~/Sources/images/logo-2.png" alt=""></a>
+                        </div>
+                        <div class="header-top-toggler">
+                            <div class="header-top-toggler-button"></div>
+                        </div>
+                        <div class="">
+                            <ul class="p-0 m-0 fla d-flex">
+                                <li>
+                                    <span class="flag-icon flag-icon-us"></span>
+                                    @Html.ActionLink("EN", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "en" }, null)
+                                </li>
+                                <li>
+                                    <span class="flag-icon flag-icon-ru"></span>
+                                    @Html.ActionLink("RU", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "ru" }, null)
+                                </li>
+                                <li>
+                                    <span class="flag-icon flag-icon-az"></span>
+                                    @Html.ActionLink("AZ", ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "az" }, null)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-expand-lg cp-nav-2">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="menu-item active"><a title="Home" href="@Url.Action("index", "home", new { Area = "" })">@Resource.Home</a></li>
+                                <li class="menu-item "><a title="About" href="@Url.Action("index", "aboutus", new { Area = "" })">@Resource.About</a></li>
+                                <li class="menu-item "><a title="Services" href="@Url.Action("index", "service", new { Area = "" })">@Resource.Services</a></li>
+                                <li class="menu-item "><a title="Vacancies" href="@Url.Action("index", "vacancy", new { Area = "" })">@Resource.Vacancies</a></li>
+                                <li class="menu-item "><a title="Links" href="@Url.Action("index", "usefullinks", new { Area = "" })">@Resource.UsefulLİnks</a></li>
+                                <li class="menu-item "><a title="Contacts" href="@Url.Action("index", "contactus", new { Area = "" })">@Resource.Contact</a></li>
+
+
+                                <li class="menu-item post-job"><a href="@Url.Action("index", "postjob", new { Area = "" })"><i class="fas fa-plus"></i>@Resource.PostJob</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer class="footer-bg">
+        <div class="footer-top border-bottom section-padding-top padding-bottom-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <a href="#">
+                                <img src="~/Sources/images/footer-logo.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-social">
+                            <ul class="social-icons">
+                                <li><a href="#"><i data-feather="facebook"></i></a></li>
+                                <li><a href="#"><i data-feather="twitter"></i></a></li>
+                                <li><a href="#"><i data-feather="linkedin"></i></a></li>
+                                <li><a href="#"><i data-feather="instagram"></i></a></li>
+                                <li><a href="#"><i data-feather="youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-widget-wrapper padding-bottom-60 padding-top-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="footer-widget widget-about">
+                            <h4>@Resource.About</h4>
+                            <div class="widget-inner">
+                                <p class="description">
+                                    @Resource.AboutFoot
+                                </p>
+                                <span class="about-contact"><i data-feather="phone-forwarded"></i>+994 70 2834525</span>
+                                <span class="about-contact"><i data-feather="mail"></i>nuri.akhmadzade@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <div class="footer-widget footer-shortcut-link">
+                            <h4>@Resource.Informasiya</h4>
+                            <div class="widget-inner">
+                                <ul>
+                                    <li><a href="@Url.Action("index", "aboutus", new { Area = ""})">@Resource.About</a></li>
+                                    <li><a href="@Url.Action("index", "contactus", new { Area = ""})">@Resource.Contact</a></li>
+                                    <li><a href="@Url.Action("index", "service", new { Area = ""})">@Resource.Services</a></li>
+                                    <li><a href="@Url.Action("index", "usefullinks", new { Area = ""})">@Resource.UsefulLİnks</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="footer-widget footer-newsletter">
+                            <h4>@Resource.SubscribeUs</h4>
+                            <p>@Resource.Email</p>
+                            <form action="#" class="newsletter-form form-inline">
+                                <div class="form-group" style="width: 180px !important">
+                                    <input type="text" class="form-control" placeholder="@Resource.EmailAdress">
+                                </div>
+                                <button class="btn button primary-bg">@Resource.Follow<i class="fas fa-caret-right"></i></button>
+                                <p class="newsletter-error">0 - Please enter a value</p>
+                                <p class="newsletter-success">Thank you for subscribing!</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="footer-bottom border-top">
+                            <div class="row">
+                                <div class="col-xl-8 col-lg-8 order-lg-1">
+                                    <p class="copyright-text">Copyright <a href="#">Oficiona</a> 2019, All right reserved</p>
+                                </div>
+                                <div class="col-xl-4 col-lg-3 order-lg-3">
+                                    <div class="back-to-top">
+                                        <a href="#">Back to top<i class="fas fa-angle-up"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/Sources/assets/js/jquery.min.js"></script>
+    <script src="~/Sources/assets/js/popper.min.js"></script>
+    <script src="~/Sources/assets/js/bootstrap.min.js"></script>
+    <script src="~/Sources/assets/js/feather.min.js"></script>
+    <script src="~/Sources/assets/js/bootstrap-select.min.js"></script>
+    <script src="~/Sources/assets/js/jquery.nstSlider.min.js"></script>
+    <script src="~/Sources/assets/js/owl.carousel.min.js"></script>
+    <script src="~/Sources/assets/js/visible.js"></script>
+    <script src="~/Sources/assets/js/jquery.countTo.js"></script>
+    <script src="~/Sources/assets/js/chart.js"></script>
+    <script src="~/Sources/assets/js/plyr.js"></script>
+    <script src="~/Sources/assets/js/tinymce.min.js"></script>
+    <script src="~/Sources/assets/js/slick.min.js"></script>
+    <script src="~/Sources/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/Sources/js/custom.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC87gjXWLqrHuLKR0CTV5jNLdP4pEHMhmg"></script>
+    <script src="~/Sources/js/map.js"></script>
+    <script src="~/Sources/assets/js/myscript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="sweetalert2.all.min.js"></script>
+</body>
+</html>

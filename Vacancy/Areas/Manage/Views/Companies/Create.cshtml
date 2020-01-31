@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+}
+    <div class="page">
+        <div id="room">
+
+            <div class="header">
+                <div class="row flex-column">
+                    <div class="col-md-9">
+                        <h1><i class="fas fa-hotel"></i>Şirkətlər bölməsi - Yarat</h1>
+                    </div>
+                    <div class="col-md-3 text-left pr-0 mb-4">
+                        <a href="@Url.Action("index", "companies")" class="btn btn-primary">Geri qayıt</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">
+                <form method="post" action="@Url.Action("create", "companies")" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="room-no">Şirkət adı:</label>
+                            <input type="text" name="Name" class="form-control" id="room-no">
+                        </div>
+                    </div>
+                    <div class="form-row col-md-6 p-0">
+                        <div class="form-group col-md-6">
+                            <label for="room-no">Şirkət Ünvanı:</label>
+                            <input type="text" name="Address" class="form-control" id="room-no">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="room-no">Şəkil Yüklə:</label>
+                            <input type="file" name="Photo" class="form-control" id="photo">
+                        </div>
+                    </div>
+                    <div class="form-row flex-column">
+                        <div class="form-group col-md-6">
+                            <label for="room-no">Şirkət E-poçt adresi:</label>
+                            <input type="text" name="Email" class="form-control" id="room-no">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="room-no">Şirkət Website adı:</label>
+                            <input type="text" name="Website" class="form-control" id="room-no">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">Yarat</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+

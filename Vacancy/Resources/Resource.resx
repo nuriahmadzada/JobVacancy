@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Haqqımızda</value>
+  </data>
+  <data name="AboutCompany" xml:space="preserve">
+    <value>Şirkət Haqqında</value>
+  </data>
+  <data name="AboutFoot" xml:space="preserve">
+    <value>Lorem Ipsumun keçidlərində bir çox dəyişiklik mövcuddur, lakin əksəriyyəti inyeksiya edilmiş yumorla bəzi formada dəyişikliyə məruz qalmışdır.</value>
+  </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>Namizəd</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kateqoriya</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Vakansiya Kodu</value>
+  </data>
+  <data name="CompAddress" xml:space="preserve">
+    <value>Şirkət Ünvanı</value>
+  </data>
+  <data name="Companies" xml:space="preserve">
+    <value>Şirkət</value>
+  </data>
+  <data name="CompEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="CompName" xml:space="preserve">
+    <value>Şirkət Adı</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Bizimlə Əlaqə</value>
+  </data>
+  <data name="ContactInfo" xml:space="preserve">
+    <value>Əlaqə Məlumatları</value>
+  </data>
+  <data name="ContactMessage" xml:space="preserve">
+    <value>Bizə Yazın</value>
+  </data>
+  <data name="Deadline" xml:space="preserve">
+    <value>Bitmə tarixi</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Ətraflı</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Ən son xəbərlərimiz və Xüsusi təkliflərimiz barədə e-poçt yeniləmələrini əldə edin. Spam göndərmirik, buna görə narahat olmayın.</value>
+  </data>
+  <data name="EmailAdress" xml:space="preserve">
+    <value>E-poçt adresi....</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Təcrübə</value>
+  </data>
+  <data name="Follow" xml:space="preserve">
+    <value>Abunə</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Ana Səhifə</value>
+  </data>
+  <data name="JobListed" xml:space="preserve">
+    <value>İş Siyahısı</value>
+  </data>
+  <data name="JobSummary" xml:space="preserve">
+    <value>Vakansiya Haqqında</value>
+  </data>
+  <data name="JobType" xml:space="preserve">
+    <value>İş Rejimi</value>
+  </data>
+  <data name="Livejob" xml:space="preserve">
+    <value>Aktiv Vakansiya</value>
+  </data>
+  <data name="MessageError" xml:space="preserve">
+    <value>Bir xəta baş verdi Zəhmət olmasa biraz sonra yenidən cəhd edin</value>
+  </data>
+  <data name="MessageSuccess" xml:space="preserve">
+    <value>Mesajınız uğurla göndərilmişdir. Təşəkkür edirik!</value>
+  </data>
+  <data name="PostJob" xml:space="preserve">
+    <value>Vakansiya Elan et</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Yüklənmə Tarixi</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Tərcümeyi hal</value>
+  </data>
+  <data name="Salary" xml:space="preserve">
+    <value>Maaş</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Axtar</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Göndər</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Xidmətlərimiz</value>
+  </data>
+  <data name="Showing" xml:space="preserve">
+    <value>Göstərilir</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>Vebsite</value>
+  </data>
+  <data name="SubscribeUs" xml:space="preserve">
+    <value>Bizə Abunə Olun</value>
+  </data>
+  <data name="TopCompanies" xml:space="preserve">
+    <value>Partnyor Şirkətlər</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Ətrafınızdakı minlərlə iş, məşğulluq və karyera imkanlarını tapmaq üçün pulsuz vakansiya elanı yükləyin!</value>
+  </data>
+  <data name="UsefulLİnks" xml:space="preserve">
+    <value>Faydalı Linklər</value>
+  </data>
+  <data name="Vacancies" xml:space="preserve">
+    <value>Vakansiyalar</value>
+  </data>
+  <data name="VacancyTitle" xml:space="preserve">
+    <value>Namizədinizi tapmaq üçün</value>
+  </data>
+  <data name="What" xml:space="preserve">
+    <value>Açar söz</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>Şəhər</value>
+  </data>
+  <data name="JobDesc" xml:space="preserve">
+    <value>İş təsviri</value>
+  </data>
+  <data name="Oxsar" xml:space="preserve">
+    <value>Oxşar Vakansiyalar</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Şəhər</value>
+  </data>
+  <data name="Informasiya" xml:space="preserve">
+    <value>Məlumat</value>
+  </data>
+  <data name="SetCategory" xml:space="preserve">
+    <value>Kateqoriya Seçin</value>
+  </data>
+  <data name="SetLocation" xml:space="preserve">
+    <value>Şəhər Seçin</value>
+  </data>
+  <data name="Validate1" xml:space="preserve">
+    <value>Ad və Soyadınızı daxil edin</value>
+  </data>
+  <data name="Validate2" xml:space="preserve">
+    <value>E-poçt boş ola bilməz</value>
+  </data>
+  <data name="Validate3" xml:space="preserve">
+    <value>Mesaj başlığını doldurun</value>
+  </data>
+  <data name="Validate4" xml:space="preserve">
+    <value>Mesaj bölməsini doldurun</value>
+  </data>
+</root>

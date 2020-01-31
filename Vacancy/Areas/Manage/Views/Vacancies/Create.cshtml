@@ -1,0 +1,122 @@
+﻿@model Vacancy.Areas.Manage.Models.ViewModelVacancyCreate
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="page">
+        <div id="room">
+
+            <div class="header">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1><i class="fas fa-user-check"></i>Vakansiyalar bölməsi - Yarat</h1>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <a href="@Url.Action("index", "vacancies")" class="btn btn-primary">Geri qayıt</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex">
+
+                <form enctype="multipart/form-data" method="post" action="@Url.Action("create","vacancies",new { Area="manage"})">
+                    <div class="form-row col-md-12 d-flex">
+                        <div class="form-group col-md-2">
+                            <label>Şəkil:</label>
+                            <input type="file" name="Photo" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Şəhər:</label>
+                            <select name="Location" id="city" class="form-control" required>
+                                <option disabled selected value="">Şəhər seçin...</option>
+                                @foreach (var item in Model.Locations)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Kateqoriya:</label>
+                            <select name="CategoryId" id="city" class="form-control" required>
+                                <option disabled selected value="">Kateqoriya seçin...</option>
+                                @foreach (var item in Model.CategoryLangs)
+                                {
+                                    <option value="@item.CategoryId">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label>Sirket:</label>
+                            <select name="CompanyId" id="city" class="form-control" required>
+                                <option disabled selected value="">Şirkət seçin...</option>
+                                @foreach (var item in Model.Companies)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="room-no">İş rejimi:</label>
+                            <select name="JobTypeId" id="jobtype" class="form-control" required>
+                                <option disabled selected value="">İş rejimi seçin...</option>
+                                @foreach (var item in Model.JobTypeLangs)
+                                {
+                                    <option value="@item.JobTypeId">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="room-no">Əmək haqqı:</label>
+                            <input type="number" name="Salary" class="form-control" id="room-no" placeholder="Maaş dəyəri" required>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="room-no">Təcrübə:</label>
+                            <select name="ExperienceId" id="experience" class="form-control" required>
+                                <option disabled selected value="">Təcrübə seçin...</option>
+                                @foreach (var item in Model.Experiences)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="deadline">Elanın bitmə vaxtı:</label>
+                            <input name="Deadline" type="date" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        @foreach (var lang in ViewBag.Langs)
+                        {
+                            <input type="hidden" name="LangId[]" value="@lang.Id" />
+                            <div class=" col-md-4">
+                                <h4>@lang.Name</h4>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="room-no">Vakansiya Başlığı:</label>
+                                        <input type="text" class="form-control" name="Title[]" placeholder="Vakansiya adı..." required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="desc">Vakansiya Haqqında Ətraflı Məlumat:</label>
+                                        <textarea class="form-control" name="Description[]" id="desc" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button type="submit" class="btn btn-success">Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,117 @@
+﻿@using Vacancy.Resources
+@model Vacancy.Models.Contact
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb -->
+<div class="alice-bg padding-top-70 padding-bottom-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="breadcrumb-area">
+                    <h1>@Resource.Contact</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("index", "home")">@Resource.Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Resource.Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<div class="alice-bg section-padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="contact-block">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="contact-address">
+                                <h4>@Resource.ContactInfo</h4>
+                                <ul>
+                                    <li><i data-feather="map-pin"></i>@Model.Location</li>
+                                    <li><i data-feather="mail"></i>@Model.Email</li>
+                                    <li><i data-feather="phone-call"></i>@Model.Phone</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 offset-lg-1">
+                            <div class="contact-form">
+                                <h4>@Resource.ContactMessage</h4>
+                                <form action="@Url.Action("message", "contactus", new { Area = "" })" method="post" class="contact">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="Name" placeholder="Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="Email" id="email" placeholder="Email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="Phone" placeholder="Phone" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="Subject" placeholder="Subject" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="Text" placeholder="Message"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="button send">@Resource.Send</button>
+                                    <p class="input-success">@Resource.MessageSuccess</p>
+                                    <p class="input-error">@Resource.MessageError</p>
+                                </form>
+                            </div>
+                        </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div id="map-area" class="contact-map">
+                                <div class="cp-map" id="location" data-lat="40.713355" data-lng="-74.005535" data-zoom="10"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Call to Action -->
+<div class="call-to-action-bg padding-top-90 padding-bottom-90">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="call-to-action-2">
+                    <div class="call-to-action-content">
+                        <h2>@Resource.VacancyTitle</h2>
+                        <p>
+                            @Resource.Upload
+                        </p>
+                    </div>
+                    <div class="call-to-action-button">
+                        <a href="@Url.Action("index", "postjob")" class="button">@Resource.PostJob</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->

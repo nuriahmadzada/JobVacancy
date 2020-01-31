@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Vacancy.Models.CategoryLang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+    int sira = 1;
+}
+
+<div class="page">
+    <div id="room">
+
+        <div class="header">
+            <div class="row">
+                <div class="col-md-9">
+                    <h1><i class="fas fa-list"></i>Kateqoriyalar bölməsi</h1>
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="@Url.Action("create", "categories")" class="btn btn-success yarat">Yeni Kateqoriya Yarat</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="room-list">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>№</th>
+                        <th>Ad</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @(sira++)
+                            </td>
+                            <td>@item.Name</td>
+                            <td>
+                                <a href="@Url.Action("edit", "categories" , new {Area="Manage", CategoryId=item.CategoryId })" class="btn btn-primary edit">Redaktə et</a>
+                                <a onclick="return confirm(' @item.Name adlı Kateqoriyanı Silməyə Əminsiniz?')" href="@Url.Action("delete", new {Area = "Manage", CategoryId=item.CategoryId})" class="btn btn-danger text-white">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

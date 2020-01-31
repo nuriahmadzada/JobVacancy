@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VacancyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="VacancyEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(VacancyModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(VacancyModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Abouts" EntityType="VacancyModel.About" />
+    <EntitySet Name="Categories" EntityType="VacancyModel.Category" />
+    <EntitySet Name="CategoryLangs" EntityType="VacancyModel.CategoryLang" />
+    <EntitySet Name="Companies" EntityType="VacancyModel.Company" />
+    <EntitySet Name="Contacts" EntityType="VacancyModel.Contact" />
+    <EntitySet Name="Experiences" EntityType="VacancyModel.Experience" />
+    <EntitySet Name="JobLangs" EntityType="VacancyModel.JobLang" />
+    <EntitySet Name="Jobs" EntityType="VacancyModel.Job" />
+    <EntitySet Name="JobTypeLangs" EntityType="VacancyModel.JobTypeLang" />
+    <EntitySet Name="JobTypes" EntityType="VacancyModel.JobType" />
+    <EntitySet Name="Languages" EntityType="VacancyModel.Language" />
+    <EntitySet Name="LinkElements" EntityType="VacancyModel.LinkElement" />
+    <EntitySet Name="Links" EntityType="VacancyModel.Link" />
+    <EntitySet Name="Locations" EntityType="VacancyModel.Location" />
+    <EntitySet Name="Messages" EntityType="VacancyModel.Message" />
+    <EntitySet Name="Partners" EntityType="VacancyModel.Partner" />
+    <EntitySet Name="ServiceElements" EntityType="VacancyModel.ServiceElement" />
+    <EntitySet Name="Services" EntityType="VacancyModel.Service" />
+    <EntitySet Name="Subscribers" EntityType="VacancyModel.Subscriber" />
+    <EntitySet Name="sysdiagrams" EntityType="VacancyModel.sysdiagram" />
+    <EntitySet Name="Emails" EntityType="VacancyModel.Email" />
+    <AssociationSet Name="FK_Abouts_Languages" Association="VacancyModel.FK_Abouts_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="About" EntitySet="Abouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryLangs_Categories" Association="VacancyModel.FK_CategoryLangs_Categories">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="CategoryLang" EntitySet="CategoryLangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_Categories" Association="VacancyModel.FK_Jobs_Categories">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryLangs_Languages" Association="VacancyModel.FK_CategoryLangs_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="CategoryLang" EntitySet="CategoryLangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_Companies" Association="VacancyModel.FK_Jobs_Companies">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_Experiences" Association="VacancyModel.FK_Jobs_Experiences">
+      <End Role="Experience" EntitySet="Experiences" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobLangs_Jobs" Association="VacancyModel.FK_JobLangs_Jobs">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="JobLang" EntitySet="JobLangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobLangs_Languages" Association="VacancyModel.FK_JobLangs_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="JobLang" EntitySet="JobLangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_JobTypes" Association="VacancyModel.FK_Jobs_JobTypes">
+      <End Role="JobType" EntitySet="JobTypes" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_Location" Association="VacancyModel.FK_Jobs_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobTypeLangs_JobTypes" Association="VacancyModel.FK_JobTypeLangs_JobTypes">
+      <End Role="JobType" EntitySet="JobTypes" />
+      <End Role="JobTypeLang" EntitySet="JobTypeLangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobTypeLangs_Languages" Association="VacancyModel.FK_JobTypeLangs_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="JobTypeLang" EntitySet="JobTypeLangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkElements_Languages" Association="VacancyModel.FK_LinkElements_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="LinkElement" EntitySet="LinkElements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Links_Languages" Association="VacancyModel.FK_Links_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Link" EntitySet="Links" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceElements_Languages" Association="VacancyModel.FK_ServiceElements_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="ServiceElement" EntitySet="ServiceElements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_Languages" Association="VacancyModel.FK_Services_Languages">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <EntitySet Name="Admins" EntityType="VacancyModel.Admin" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="About">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_Abouts_Languages" FromRole="About" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CategoryLangs" Relationship="VacancyModel.FK_CategoryLangs_Categories" FromRole="Category" ToRole="CategoryLang" />
+    <NavigationProperty Name="Jobs" Relationship="VacancyModel.FK_Jobs_Categories" FromRole="Category" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="CategoryLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="VacancyModel.FK_CategoryLangs_Categories" FromRole="CategoryLang" ToRole="Category" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_CategoryLangs_Languages" FromRole="CategoryLang" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Jobs" Relationship="VacancyModel.FK_Jobs_Companies" FromRole="Company" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Experience">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Jobs" Relationship="VacancyModel.FK_Jobs_Experiences" FromRole="Experience" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="JobLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="JobId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Job" Relationship="VacancyModel.FK_JobLangs_Jobs" FromRole="JobLang" ToRole="Job" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_JobLangs_Languages" FromRole="JobLang" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="JobTypeId" Type="Int32" Nullable="false" />
+    <Property Name="ExperienceId" Type="Int32" Nullable="false" />
+    <Property Name="Location" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salary" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="VacancyModel.FK_Jobs_Categories" FromRole="Job" ToRole="Category" />
+    <NavigationProperty Name="Company" Relationship="VacancyModel.FK_Jobs_Companies" FromRole="Job" ToRole="Company" />
+    <NavigationProperty Name="Experience" Relationship="VacancyModel.FK_Jobs_Experiences" FromRole="Job" ToRole="Experience" />
+    <NavigationProperty Name="JobLangs" Relationship="VacancyModel.FK_JobLangs_Jobs" FromRole="Job" ToRole="JobLang" />
+    <NavigationProperty Name="JobType" Relationship="VacancyModel.FK_Jobs_JobTypes" FromRole="Job" ToRole="JobType" />
+    <NavigationProperty Name="Location1" Relationship="VacancyModel.FK_Jobs_Location" FromRole="Job" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="JobTypeLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="JobTypeId" Type="Int32" Nullable="false" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="JobType" Relationship="VacancyModel.FK_JobTypeLangs_JobTypes" FromRole="JobTypeLang" ToRole="JobType" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_JobTypeLangs_Languages" FromRole="JobTypeLang" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="JobType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Jobs" Relationship="VacancyModel.FK_Jobs_JobTypes" FromRole="JobType" ToRole="Job" />
+    <NavigationProperty Name="JobTypeLangs" Relationship="VacancyModel.FK_JobTypeLangs_JobTypes" FromRole="JobType" ToRole="JobTypeLang" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Abouts" Relationship="VacancyModel.FK_Abouts_Languages" FromRole="Language" ToRole="About" />
+    <NavigationProperty Name="CategoryLangs" Relationship="VacancyModel.FK_CategoryLangs_Languages" FromRole="Language" ToRole="CategoryLang" />
+    <NavigationProperty Name="JobLangs" Relationship="VacancyModel.FK_JobLangs_Languages" FromRole="Language" ToRole="JobLang" />
+    <NavigationProperty Name="JobTypeLangs" Relationship="VacancyModel.FK_JobTypeLangs_Languages" FromRole="Language" ToRole="JobTypeLang" />
+    <NavigationProperty Name="LinkElements" Relationship="VacancyModel.FK_LinkElements_Languages" FromRole="Language" ToRole="LinkElement" />
+    <NavigationProperty Name="Links" Relationship="VacancyModel.FK_Links_Languages" FromRole="Language" ToRole="Link" />
+    <NavigationProperty Name="ServiceElements" Relationship="VacancyModel.FK_ServiceElements_Languages" FromRole="Language" ToRole="ServiceElement" />
+    <NavigationProperty Name="Services" Relationship="VacancyModel.FK_Services_Languages" FromRole="Language" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="LinkElement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="Question" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_LinkElements_Languages" FromRole="LinkElement" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Link">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_Links_Languages" FromRole="Link" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Jobs" Relationship="VacancyModel.FK_Jobs_Location" FromRole="Location" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceElement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="Question" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_ServiceElements_Languages" FromRole="ServiceElement" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LangId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Language" Relationship="VacancyModel.FK_Services_Languages" FromRole="Service" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Subscriber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Subject" />
+      <PropertyRef Name="Mail" />
+      <PropertyRef Name="Mesaj" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mesaj" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Abouts_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.About" Role="About" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="About">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryLangs_Categories">
+    <End Type="VacancyModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="VacancyModel.CategoryLang" Role="CategoryLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryLang">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_Categories">
+    <End Type="VacancyModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="VacancyModel.Job" Role="Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryLangs_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.CategoryLang" Role="CategoryLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryLang">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_Companies">
+    <End Type="VacancyModel.Company" Role="Company" Multiplicity="1" />
+    <End Type="VacancyModel.Job" Role="Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_Experiences">
+    <End Type="VacancyModel.Experience" Role="Experience" Multiplicity="1" />
+    <End Type="VacancyModel.Job" Role="Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Experience">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="ExperienceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobLangs_Jobs">
+    <End Type="VacancyModel.Job" Role="Job" Multiplicity="1" />
+    <End Type="VacancyModel.JobLang" Role="JobLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobLang">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobLangs_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.JobLang" Role="JobLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobLang">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_JobTypes">
+    <End Type="VacancyModel.JobType" Role="JobType" Multiplicity="1" />
+    <End Type="VacancyModel.Job" Role="Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="JobTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_Location">
+    <End Type="VacancyModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="VacancyModel.Job" Role="Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="Location" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobTypeLangs_JobTypes">
+    <End Type="VacancyModel.JobType" Role="JobType" Multiplicity="1" />
+    <End Type="VacancyModel.JobTypeLang" Role="JobTypeLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobTypeLang">
+        <PropertyRef Name="JobTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobTypeLangs_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.JobTypeLang" Role="JobTypeLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobTypeLang">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkElements_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.LinkElement" Role="LinkElement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkElement">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Links_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.Link" Role="Link" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Link">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceElements_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.ServiceElement" Role="ServiceElement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceElement">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_Languages">
+    <End Type="VacancyModel.Language" Role="Language" Multiplicity="1" />
+    <End Type="VacancyModel.Service" Role="Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="LangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

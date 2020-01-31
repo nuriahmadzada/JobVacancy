@@ -1,0 +1,176 @@
+﻿@using Vacancy.Resources
+@model Vacancy.Models.ViewmodelHome
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb -->
+<div class="alice-bg padding-top-70 padding-bottom-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="breadcrumb-area">
+                    <h1>@Resource.Vacancies</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("index", "home")">@Resource.Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Resource.Vacancies</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Job Listing -->
+<div class="alice-bg section-padding-bottom">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="job-listing-container">
+
+                    <div class="filtered-job-listing-wrapper">
+
+                        <div class="job-view-controller-wrapper">
+                            <div class="job-view-controller">
+                                <div class="controller list active">
+                                    <i data-feather="menu"></i>
+                                </div>
+                                <div class="controller grid">
+                                    <i data-feather="grid"></i>
+                                </div>
+                            </div>
+                            <div class="showing-number">
+                                <span>@Resource.Showing 1–@Model.Jobs.Count() of @Model.Jobs.Count()</span>
+                            </div>
+                        </div>
+
+                        <div class="job-filter-result">
+                            @foreach (var item in Model.Jobs)
+                            {
+                                <!-- job List Start -->
+                                <div class="job-list">
+                                    <div class="thumb">
+                                        <a href="#">
+                                            <img src="~/Uploads/@item.Job.Photo" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="body">
+                                        <div class="content">
+                                            <h4><a href="@Url.Action("index", "jobdetail")">@item.Title</a></h4>
+                                            <div class="info">
+                                                <span class="company"><a href="#"><i data-feather="briefcase"></i> @item.Job.Company.Name</a></span>
+                                                <span class="office-location"><a href="#"><i data-feather="map-pin"></i>@item.Job.Location1.Name</a></span>
+                                                <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>@item.Job.JobType.JobTypeLangs.FirstOrDefault(f => f.Language.Name == ViewBag.Lang).Name</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="more">
+                                            <div class="buttons">
+                                                <a href="@Url.Action("index", "jobdetail", new {id=item.JobId, Area="" })" class="button">Ətraflı Bax</a>
+                                            </div>
+                                            <p class="deadline">@Resource.Deadline: @item.Job.Deadline.ToString("dd.MM.yyyy")</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Job List End -->
+                            }
+
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination-list text-center">
+                            <nav class="navigation pagination">
+                                <div class="nav-links">
+                                    <a class="prev page-numbers" href="#"><i class="fas fa-angle-left"></i></a>
+                                    <a class="page-numbers" href="#">1</a>
+                                    <span aria-current="page" class="page-numbers current">2</span>
+                                    <a class="page-numbers" href="#">3</a>
+                                    <a class="page-numbers" href="#">4</a>
+                                    <a class="next page-numbers" href="#"><i class="fas fa-angle-right"></i></a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="job-filter-wrapper">
+                        <div class="job-filter-dropdown same-pad category">
+                            <select name="CategoryId" class="selectpicker">
+                                <option value="" selected>@Resource.Category</option>
+                                @foreach (var categories in Model.CategoryLangs)
+                                {
+                                    <option value="@categories.CategoryId">@categories.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="job-filter-dropdown same-pad location">
+                            <select name="LocationId" class="selectpicker" id="search-location">
+                                <option value="" selected>@Resource.Where</option>
+                                @foreach (var locations in Model.Locations)
+                                {
+                                    <option value="@locations.Id">@locations.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div data-id="job-type" class="job-filter job-type same-pad">
+                            <h4 class="option-title">@Resource.JobType</h4>
+                            <ul>
+                                @foreach (var jobtype in Model.JobTypeLangs)
+                                {
+                                    <li class="full-time">
+                                        <i data-feather="clock"></i>
+                                        <input type="radio" name="jobtype" value="@jobtype.Id" />@jobtype.Name<br />
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <div data-id="experience" class="job-filter experience same-pad">
+                            <h4 class="option-title">@Resource.Experience</h4>
+                            <ul>
+                                @foreach (var exp in Model.Experiences)
+                                {
+                                <li>
+                                    <input type="radio" name="experience" value="@exp.Id" />@exp.Name il<br />
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                        <div style="padding:20px;">
+                            <a class="btn btn-primary axtar" href="">@Resource.Search</a>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Job Listing End -->
+
+<!-- Call to Action -->
+<div class="call-to-action-bg padding-top-90 padding-bottom-90">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="call-to-action-2">
+                    <div class="call-to-action-content">
+                        <h2>@Resource.VacancyTitle</h2>
+                        <p>
+                            @Resource.Upload
+                        </p>
+                    </div>
+                    <div class="call-to-action-button">
+                        <a href="@Url.Action("index", "postjob")" class="button">@Resource.PostJob</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->

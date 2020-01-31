@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Vacancy.Models.Company>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+    int sira = 1;
+}
+
+<div class="page">
+    <div id="room">
+
+        <div class="header">
+            <div class="row">
+                <div class="col-9">
+                    <h1><i class="fas fa-hotel"></i>Şirkətlər bölməsi</h1>
+                </div>
+                <div class="col-3 text-right">
+                    <a href="@Url.Action("create", "companies")" class="btn btn-success yarat">Yeni Şirkət Yarat</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="room-list">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>№</th>
+                        <th>Şəkil</th>
+                        <th>Ad</th>
+                        <th>Ünvan</th>
+                        <th>Email</th>
+                        <th>Website</th>
+                        <th>Status</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var items in Model)
+                    {
+                        <tr>
+                            <td>
+                                @(sira++)
+                            </td>
+                            <td>
+                                <img src="~/Uploads/@items.Photo" alt="" style="width: 150px;">
+                            </td>
+                            <td>
+                                @items.Name
+                            </td>
+                            <td>
+                                @items.Address
+                            </td>
+                            <td>
+                                @items.Email
+                            </td>
+                            <td>
+                                @items.Website
+                            </td>
+                            <td>
+                                @if (items.Status == true)
+                                {
+                                    <span class="badge badge-success">Aktiv</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Deaktiv</span>
+                                }
+                            </td>
+                            <td style="width: 23%">
+                                <a href="@Url.Action("edit", "companies", new { Area = "Manage", Id = items.Id })" class="btn btn-primary edit">Redaktə et</a>
+                                @if (items.Status == true)
+                                {
+                                    <a onclick="return confirm(' @items.Name adlı Şirkəti deaktiv etmək istədiyinizə əminsiniz?')" href="@Url.Action("deactive", "companies", new { Area = "Manage", Id = items.Id })" class="btn btn-danger">Deaktiv et</a>
+                                }
+                                else
+                                {
+                                    <a onclick="return confirm(' @items.Name adlı Şirkəti aktiv etmək istədiyinizə əminsiniz?')" href="@Url.Action("active", "companies", new { Area = "Manage", Id = items.Id })" class="btn btn-success">Aktiv et</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="page">
+        <div id="room">
+
+            <div class="header">
+                <div class="row flex-column">
+                    <div class="col-md-6 ">
+                        <h1><i class="fas fa-list"></i>Kateqoriyalar bölməsi - Yarat</h1>
+                    </div>
+                    <div class="col-md-3 text-left pr-0 mb-4">
+                        <a href="@Url.Action("index", "categories")" class="btn btn-primary">Geri qayıt</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">
+                <form method="post" action="@Url.Action("New","Categories", new {Area="Manage" })">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @foreach (var lang in ViewBag.Langs)
+                            {
+                                <input type="hidden" name="LangId[]" value="@lang.Id" />
+                                <label for="room-no">Kateqoriya adı (@lang.Name):</label>
+                                <input type="text" name="Name[]" class="form-control" id="room-no">
+                            }
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">Yarat</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+

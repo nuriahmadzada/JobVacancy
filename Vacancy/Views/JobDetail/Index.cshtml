@@ -1,0 +1,149 @@
+﻿@using Vacancy.Resources
+@model Vacancy.Models.ViewModelJobDetail
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Candidates Details -->
+<div class="alice-bg padding-top-60 section-padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="job-listing-details">
+                    <div class="job-title-and-info">
+                        <div class="title">
+                            <div class="thumb">
+                                <img src="~/Uploads/@Model.Vacancy.Job.Photo" class="img-fluid" alt="">
+                            </div>
+                            <div class="title-body">
+                                <h4>@Model.Vacancy.Title</h4>
+                                <div class="info">
+                                    <span class="company"><a href="#"><i data-feather="briefcase"></i> @Model.Vacancy.Job.Company.Name</a></span>
+                                    <span class="office-location"><a href="#"><i data-feather="map-pin"></i>@Model.Vacancy.Job.Location1.Name</a></span>
+                                    <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>@Model.Vacancy.Job.JobType.JobTypeLangs.FirstOrDefault(f => f.Language.Name == ViewBag.Lang).Name</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-information section-padding-60">
+                        <div class="row">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="description details-section">
+                                    <h4><i data-feather="align-left"></i>@Resource.JobDesc</h4>
+                                    <p style="white-space: pre-line">
+                                      @Html.Raw(Model.Vacancy.Description)
+                                    </p>
+                               
+                                </div>
+                         
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="col-md-10 mb-4">
+                                    <div class="information-and-share">
+                                        <div class="job-summary">
+                                            <h4>@Resource.JobSummary</h4>
+                                            <ul>
+                                                <li><span>@Resource.Published:</span> @Model.Vacancy.Job.PublishDate.ToString("dd.MM.yyyy")</li>
+                                                <li><span>@Resource.Category:</span> @Model.Vacancy.Job.Category.CategoryLangs.FirstOrDefault(f => f.Language.Name == ViewBag.Lang).Name</li>
+                                                <li><span>@Resource.Code:</span> @Model.Vacancy.Job.Code</li>
+                                                <li><span>@Resource.JobType:</span> @Model.Vacancy.Job.JobType.JobTypeLangs.FirstOrDefault(f => f.Language.Name == ViewBag.Lang).Name</li>
+                                                <li><span>@Resource.Experience:</span> @Model.Vacancy.Job.Experience.Name il</li>
+                                                <li><span>@Resource.Location:</span> @Model.Vacancy.Job.Location1.Name</li>
+                                                <li><span>@Resource.Salary:</span> @Model.Vacancy.Job.Salary AZN</li>
+                                                <li><span>@Resource.Deadline:</span> @Model.Vacancy.Job.Deadline.ToString("dd.MM.yyyy")</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10">
+                                    <div class="information-and-share">
+                                        <div class="job-summary">
+                                            <h4>@Resource.AboutCompany</h4>
+                                            <ul>
+                                                <li><span>@Resource.CompName:</span>@Model.Vacancy.Job.Company.Name</li>
+                                                <li><span>@Resource.CompAddress:</span>@Model.Vacancy.Job.Company.Address</li>
+                                                <li><span>@Resource.Site:</span>@Model.Vacancy.Job.Company.Website</li>
+                                                <li><span>@Resource.CompEmail:</span>@Model.Vacancy.Job.Company.Email</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Candidates Details End -->
+<!-- Jobs -->
+<div class="section-padding-bottom alice-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section-header section-header-2 section-header-with-right-content">
+                    <h2>@Resource.Oxsar</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @foreach (var item in Model.Vacancies)
+                {
+                    <div class="job-list">
+                        <div class="thumb">
+                            <a href="#">
+                                <img src="~/Uploads/@item.Job.Photo" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="body">
+                            <div class="content">
+                                <h4><a href="@Url.Action("index", "jobdetail" , new {id=item.JobId, Area="" })">@item.Title</a></h4>
+                                <div class="info">
+                                    <span class="company"><a href="#"><i data-feather="briefcase"></i>@item.Job.Company.Name</a></span>
+                                    <span class="office-location"><a href="#"><i data-feather="map-pin"></i>@item.Job.Location1.Name</a></span>
+                                    <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>@item.Job.JobType.JobTypeLangs.FirstOrDefault(f => f.Language.Name == ViewBag.Lang).Name</a></span>
+                                </div>
+                            </div>
+                            <div class="more">
+                                <div class="buttons">
+                                    <a href="@Url.Action("index", "jobdetail", new {id=item.JobId, Area="" })" class="button">@Resource.Details</a>
+                                </div>
+                                <p class="deadline">@Resource.Deadline: @item.Job.Deadline.ToShortDateString()</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jobs End -->
+<!-- Call to Action -->
+<div class="call-to-action-bg padding-top-90 padding-bottom-90">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="call-to-action-2">
+                    <div class="call-to-action-content">
+                        <h2>@Resource.VacancyTitle</h2>
+                        <p>
+                            @Resource.Upload
+                        </p>
+                    </div>
+                    <div class="call-to-action-button">
+                        <a href="@Url.Action("index", "postjob")" class="button">@Resource.PostJob</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->

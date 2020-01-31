@@ -1,0 +1,46 @@
+﻿@model List<Vacancy.Models.CategoryLang>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+    int i = 0;
+}
+
+
+<div class="page">
+    <div id="room">
+
+        <div class="header">
+            <div class="row flex-column">
+                <div class="col-md-9">
+                    <h1><i class="fas fa-list"></i>Kateqoriyalar bölməsi - Redaktə</h1>
+                </div>
+                <div class="col-md-3 text-left pr-0 mb-4">
+                    <a href="@Url.Action("index", "categories")" class="btn btn-primary">Geri qayıt</a>
+                </div>
+            
+
+            </div>
+        </div>
+
+        <div class="">
+            <form method="post" action="@Url.Action("Update","Categories")">
+                <div class="form-row">
+                   <input type="hidden" name="CategoryId" value="@Model[0].CategoryId" />
+                   @foreach(var item in Model)
+                    {
+                        <div class="form-group col-md-7">
+                            <label for="room-no">Kateqoriya adı (@item.Language.Name):</label>
+                            <input type="hidden" name="LangId[]" value="@item.LangId" />
+                            <input type="text" name="Name[]" value="@item.Name" class="form-control" id="room-no">
+                        </div>
+                    }
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success">Yadda Saxla</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

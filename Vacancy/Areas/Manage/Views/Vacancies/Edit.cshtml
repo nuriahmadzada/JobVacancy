@@ -1,0 +1,130 @@
+﻿@model Vacancy.Areas.Manage.Models.ViewModelVacancyCreate
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="page">
+    <div id="room">
+        <div class="header">
+            <div class="row flex-column">
+                <div class="col-md-9">
+                    <h1><i class="fas fa-user-check"></i>Vakansiyalar bölməsi - Redaktə</h1>
+                </div>
+                <div class="col-md-3 text-left pr-0 mb-4">
+                    <a href="@Url.Action("index", "vacancies")" class="btn btn-primary">Geri qayıt</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <form enctype="multipart/form-data" method="post" action="@Url.Action("edit","vacancies",new { Area="manage"})">
+                <input type="hidden" name="JobId" value="@Model.Job.Id" />
+                <div class="form-row col-md-12 d-flex">
+                    <div class="form-group d-flex col-md-12">
+                        <div class="form-group col-md-4 pl-0">
+                            <label>Şəkil:</label>
+                            <input type="file" name="Photo" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <img src="~/Uploads/@Model.Job.Photo" class="sekil" />
+                            <input type="hidden" name="OldPicture" value="@Model.Job.Photo" />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-2">
+                        <label>Şəhər:</label>
+                        <select name="Location" id="city" class="form-control">
+                            <option  selected value="@Model.Job.Location">@Model.Job.Location1.Name</option>
+                            @foreach (var item in Model.Locations)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label>Kateqoriya:</label>
+                        <select name="CategoryId" id="city" class="form-control">
+                            <option  selected value="@Model.Job.CategoryId">@Model.Job.Category.CategoryLangs.FirstOrDefault(f => f.Status == true).Name</option>
+                            @foreach (var item in Model.CategoryLangs)
+                            {
+                                <option value="@item.CategoryId">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label>Şirkət:</label>
+                        <select name="CompanyId" id="city" class="form-control">
+                            <option  selected value="@Model.Job.CompanyId">@Model.Job.Company.Name</option>
+                            @foreach (var item in Model.Companies)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="room-no">İş rejimi:</label>
+                        <select name="JobTypeId" id="jobtype" class="form-control">
+                            <option  selected value="@Model.Job.JobTypeId">@Model.Job.JobType.JobTypeLangs.FirstOrDefault(s => s.Status == true).Name</option>
+                            @foreach (var item in Model.JobTypeLangs)
+                            {
+                                <option value="@item.JobTypeId">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-1">
+                        <label for="room-no">Əmək haqqı:</label>
+                        <input type="number" name="Salary" class="form-control" id="room-no" placeholder="Maaş dəyəri" value="@Model.Job.Salary">
+                    </div>
+
+                    <div class="form-group col-md-1">
+                        <label for="room-no">Təcrübə:</label>
+                        <select name="ExperienceId" id="experience" class="form-control">
+                            <option  selected value="@Model.Job.ExperienceId">@Model.Job.Experience.Name</option>
+                            @foreach (var item in Model.Experiences)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label for="deadline">Elanın bitmə vaxtı:</label>
+                        <input name="Deadline" type="date" class="form-control" required value="@Model.Job.Deadline">@Model.Job.Deadline.ToShortDateString()<br />
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    @foreach (var item in Model.JobLangs)
+                    {
+                        <input type="hidden" name="LangId[]" value="@item.LangId" />
+                        <div class=" col-md-4">
+                            <h4>@item.Language.Name</h4>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="room-no">Vakansiya Başlığı:</label>
+                                    <input type="text" class="form-control" name="Title[]" placeholder="Vakansiya adı..." value="@item.Title">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="desc">Vakansiya Haqqında Ətraflı Məlumat:</label>
+                                    <textarea class="form-control" name="Description[]" id="desc" cols="30" rows="10">@item.Description</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <button type="submit" class="btn btn-success">Yadda Saxla</button>
+            </form>
+        </div>
+
+    </div>
+</div>

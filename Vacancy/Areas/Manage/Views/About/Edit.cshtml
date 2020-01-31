@@ -1,0 +1,53 @@
+﻿@model Vacancy.Models.About
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="page">
+        <div id="room">
+
+            <div class="header">
+                <div class="row d-flex flex-column">
+                    <div class="col-8">
+                        <h1><i class="fas fa-address-card"></i>Haqqımızda bölməsi - Redaktə - @Model.Language.Name</h1>
+                    </div>
+                    <div class="col-3 text-right pr-0 mb-3" style="text-align: left !important;">
+                        <a href="@Url.Action("index", "about")" class="btn btn-primary">Geri qayıt</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">
+                <form method="post" action="@Url.Action("Update","About", new { Area="Manage"})" enctype="multipart/form-data">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+                    <input type="hidden" name="LangId" value="@Model.LangId" />
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="room-no">Başlıq</label>
+                            <input type="text" class="form-control" name="Title" value="@Model.Title" id="room-no">
+                        </div>
+                    </div>
+                    <div class="form-row flex-column">
+                        <div class="form-group col-md-6">
+                            <label for="Photo">Şəkil Yüklə:</label>
+                            <input type="file" name="Photo" class="form-control" id="photo">
+                            <input type="hidden" value="@Model.Photo" name="OldPhoto" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <img src="~/Uploads/@Model.Photo" height="150" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 p-0">
+                        <label for="desc">Açıqlama:</label>
+                        <textarea class="form-control" name="Description" id="desc" rows="5">@Model.Description</textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">Yadda saxla</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

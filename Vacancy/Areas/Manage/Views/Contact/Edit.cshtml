@@ -1,0 +1,44 @@
+﻿@model Vacancy.Models.Contact
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="page">
+    <div id="room">
+        <div class="header">
+            <div class="row d-flex flex-column">
+                <div class="col-9">
+                    <h1><i class="fas fa-phone-square"></i>Bizimlə Əlaqə bölməsi - Redaktə</h1>
+                </div>
+                <div class="col-3 text-right pr-0 mb-4" style="text-align: left !important;">
+                    <a href="@Url.Action("index", "contact")" class="btn btn-primary">Geri qayıt</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <form method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <label for="room-no">Ünvan:</label>
+                        <input type="text" class="form-control" name="Location" value="@Model.Location">
+
+                        <label for="room-no">Email:</label>
+                        <input type="text" class="form-control" name="Email" value="@Model.Email">
+
+                        <label for="room-no">Telefon:</label>
+                        <input type="text" class="form-control" name="Phone" value="@Model.Phone">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success">Yadda Saxla</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

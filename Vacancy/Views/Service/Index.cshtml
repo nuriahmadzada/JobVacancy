@@ -1,0 +1,104 @@
+﻿@using Vacancy.Resources
+@model Vacancy.Models.ViewModelService
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int a = 1;
+}
+
+<!-- Breadcrumb -->
+<div class="alice-bg padding-top-70 padding-bottom-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="breadcrumb-area">
+                    <h1>@Resource.Services</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("index", "home")">@Resource.Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Resource.Services</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- How It Work -->
+<div class="alice-bg section-padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="white-bg others-block">
+                    <!-- FAQ -->
+                    <div class="padding-top-60 padding-bottom-60">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="section-header section-header-center">
+                                        <h6>@Model.service.Title</h6>
+                                        <h2>@Model.service.Description</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="tab-content faq-tab-content" id="myTabContent">
+                                        <div class="tab-pane fade active show" id="feature" role="tabpanel" aria-labelledby="feature-tab">
+                                            <div class="accordion" id="accordionExample">
+                                                @foreach (var item in Model.serviceElements)
+                                                {
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingOne">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@item.Id" aria-expanded="false" aria-controls="@item.Id">
+                                                                    @item.Question
+                                                                </button>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="@item.Id" class="collapse active show" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+                                                            <div class="card-body">
+                                                                <p>
+                                                                    @item.Answer
+                                                                </p>
+                                                           
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- How It Work End -->
+<!-- Call to Action -->
+<div class="call-to-action-bg padding-top-90 padding-bottom-90">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="call-to-action-2">
+                    <div class="call-to-action-content">
+                        <h2>@Resource.VacancyTitle</h2>
+                        <p>
+                            @Resource.Upload
+                        </p>
+                    </div>
+                    <div class="call-to-action-button">
+                        <a href="@Url.Action("index", "postjob")" class="button">@Resource.PostJob</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->

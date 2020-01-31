@@ -1,0 +1,185 @@
+﻿@using Vacancy.Resources
+@model Vacancy.Models.ViewmodelHome
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Banner -->
+<div class="banner banner-3 banner-3-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="banner-content">
+                    <h1>@Model.Jobs.Count() @Resource.JobListed</h1>
+                    <p>@Resource.Upload</p>
+                    <a href="@Url.Action("index", "postjob")" class="button">@Resource.PostJob</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+
+<!-- Search and Filter -->
+<div class="searchAndFilter-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="searchAndFilter-block-3">
+                    <div class="searchAndFilter-3">
+                        <form method="get" action="@Url.Action("search", "home", new { Area = ""})" class="search-form">
+                            @* Location *@
+                            <div class="location-input">
+                                <label>@Resource.Location:</label>
+                                <select name="LocationId" class="selectpicker" id="search-location">
+                                    <option value="" selected>@Resource.SetLocation...</option>
+                                    @foreach (var locations in Model.Locations)
+                                    {
+                                        <option value="@locations.Id">@locations.Name</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @* Category *@
+                            <div class="category-input">
+                                <label>@Resource.Category</label>
+                                <select name="CategoryId" class="selectpicker" id="search-category">
+                                    <option value="" selected>@Resource.SetCategory...</option>
+                                    @foreach (var categories in Model.CategoryLangs)
+                                    {
+                                        <option value="@categories.CategoryId">@categories.Name</option>
+                                    }
+                                </select>
+                            </div>
+
+                            @* Text Search *@
+                            <input type="text" name="Text" placeholder="Search here..." style="border: 1px solid blue"/>
+
+                            <button type="submit" class="button primary-bg search"><i class="fas fa-search"></i></button>
+                        </form>
+
+                        <div class="filtered-job-listing-wrapper">
+                            <div class="job-view-controller-wrapper">
+                                <div class="job-view-controller">
+                                    <div class="controller list active">
+                                        <i data-feather="menu"></i>
+                                    </div>
+                                    <div class="controller grid">
+                                        <i data-feather="grid"></i>
+                                    </div>
+                                </div>
+                                <div class="showing-number">
+                                    <span>@Resource.Showing 1–@Model.Jobs.Count() of @Model.Jobs.Count()</span>
+                                </div>
+                            </div>
+
+                            <div class="job-filter-result search_area">
+                                    @foreach (var item in Model.Jobs)
+                                    {
+                                        <div class="job-list">
+                                            <div class="thumb">
+                                                <a href="#">
+                                                    <img src="~/Uploads/@item.Job.Photo" class="img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="body">
+                                                <div class="content">
+                                                    <h4><a href="@Url.Action("index", "jobdetail" , new {id=item.JobId, Area="" })">@item.Title</a></h4>
+                                                    <div class="info">
+                                                        <span class="company"><a href="#"><i data-feather="briefcase"></i>@item.Job.Company.Name</a></span>
+                                                        <span class="office-location"><a href="#"><i data-feather="map-pin"></i>@item.Job.Location1.Name</a></span>
+                                                        <span class="job-type temporary"><a href="#"><i data-feather="clock"></i>@item.Job.JobType.JobTypeLangs.FirstOrDefault(f => f.Language.Name == ViewBag.Lang).Name</a></span>
+                                                        <span class="office-location"><a href="#"><i class="fas fa-list" style="margin-right:5px;"></i>@item.Job.Category.CategoryLangs.FirstOrDefault(f => f.Language.Name == ViewBag.Lang).Name</a></span>
+                                                    </div>
+                                                </div>
+                                                <div class="more">
+                                                    <div class="buttons">
+                                                        <a href="@Url.Action("index", "jobdetail", new {id=item.JobId, Area="" })" class="button">@Resource.Details</a>
+                                                    </div>
+                                                    <p class="deadline">@Resource.Deadline: @item.Job.Deadline.ToShortDateString()</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                
+                            </div>
+                            <div class="pagination-list text-center">
+                                <nav class="navigation pagination">
+                                    <div class="nav-links">
+                                        <a class="prev page-numbers" href="#"><i class="fas fa-angle-left"></i></a>
+                                        <span aria-current="page" class="page-numbers current">1</span>
+                                        <a class="page-numbers" href="#">2</a>
+                                        <a class="page-numbers" href="#">3</a>
+                                        <a class="page-numbers" href="#">4</a>
+                                        <a class="next page-numbers" href="#"><i class="fas fa-angle-right"></i></a>
+                                    </div>
+                                </nav>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search and Filter End -->
+
+<!-- Top Companies -->
+<div class="section-padding-top padding-bottom-90">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section-header">
+                    <h2>@Resource.TopCompanies</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="company-carousel owl-carousel">
+                    @foreach (var companies in Model.Companies)
+                    {
+                        <div class="company-wrap">
+                            <div class="thumb" style="height: 130px;">
+                                <a href="#">
+                                    <img src="~/Uploads/@companies.Photo" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="body">
+                                <h4><a href="#">@companies.Name</a></h4>
+                                <span>@companies.Address</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Companies End -->
+
+<!-- NewsLetter -->
+<div class="newsletter-bg padding-top-90 padding-bottom-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6">
+                <div class="newsletter-wrap">
+                    <h3>@Resource.SubscribeUs</h3>
+                    <p>@Resource.Email</p>
+                    <form action="@Url.Action("subscribe", "home", new { Area=""})" method="post" class="newsletter-form form-inline subscribe">
+                        <div class="form-group" style="width: 200px !important">
+                            <input type="text" name="Email" id="email" class="form-control" placeholder="@Resource.EmailAdress">
+                        </div>
+                        <button type="submit" class="btn button">@Resource.Follow<i class="fas fa-caret-right"></i></button>
+                        <p class="newsletter-error">Please enter a your email</p>
+                        <p class="newsletter-success">Thank you for subscribing!</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- NewsLetter End -->

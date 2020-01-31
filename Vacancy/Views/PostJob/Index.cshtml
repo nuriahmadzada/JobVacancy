@@ -1,0 +1,238 @@
+﻿@using Vacancy.Resources
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb -->
+<div class="alice-bg padding-top-70 padding-bottom-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="breadcrumb-area">
+                    <h1>@Resource.PostJob</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@Url.Action("index", "home")">@Resource.Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Resource.PostJob</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<div class="alice-bg section-padding-bottom">
+    <div class="container no-gliters">
+        <div class="row no-gliters">
+            <div class="col">
+                <div class="post-container">
+                    <div class="post-content-wrapper">
+                        <form action="#" class="job-post-form">
+                            <div class="basic-info-input">
+                                <h4><i data-feather="plus-circle"></i>@Resource.PostJob</h4>
+
+                                <!-- Job Title -->
+                                <div id="job-title" class="form-group row">
+                                    <label class="col-md-3 col-form-label">Job Title</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" placeholder="Your job title here">
+                                    </div>
+                                </div>
+
+                                <div id="job-summery" class="row">
+                                    <label class="col-md-3 col-form-label">Job Summary</label>
+                                    <div class="col-md-9">
+                                        <div class="row">
+
+                                            <!-- Kateqoriya -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <select class="form-control">
+                                                        <option>Select Category</option>
+                                                        <option>Accounting / Finance</option>
+                                                        <option>Health Care</option>
+                                                        <option>Garments / Textile</option>
+                                                        <option>Telecommunication</option>
+                                                    </select>
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Job Location -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <select class="form-control">
+                                                        <option selected disabled>Şəhər seçin</option>
+                                                        <option>Bakı</option>
+                                                        <option>Gəncə</option>
+                                                        <option>Sumqayıt</option>
+                                                        <option>Mingəçevir</option>
+                                                        <option>Qazax</option>
+                                                    </select>
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Job Type -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <select class="form-control">
+                                                        <option>Job Type</option>
+                                                        <option>Part Time</option>
+                                                        <option>Full Time</option>
+                                                        <option>Temperory</option>
+                                                        <option>Permanent</option>
+                                                        <option>Freelance</option>
+                                                    </select>
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Job Experience  -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <select class="form-control">
+                                                        <option>Experience (Optional)</option>
+                                                        <option>Less than 1 Year</option>
+                                                        <option>2 Year</option>
+                                                        <option>3 Year</option>
+                                                        <option>4 Year</option>
+                                                        <option>Over 5 Year</option>
+                                                    </select>
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                            </div>
+
+                                            <!-- Job Salary -->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control" placeholder="Maaş qeyd edin">
+                                                </div>
+                                            </div>
+
+                                            <!-- Deadline -->
+                                            <div class="col-md-6">
+                                                <div class="form-group datepicker">
+                                                    <input type="date" class="form-control">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Job Desc -->
+                                <div class="row">
+                                    <label class="col-md-3 col-form-label">Job Description</label>
+                                    <div class="form-group col-md-9">
+                                        <textarea placeholder="İş Haqqında Ətraflı Məlumat" class="form-control"
+                                                  id="exampleFormControlTextarea3" rows="7"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Abou Company -->
+                                <div id="about-company" class="row">
+                                    <label class="col-md-3 col-form-label">About Company</label>
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Company Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Web Address">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Email">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Ünvan">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Job Submit -->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <button class="button">Elanı təsdiq et</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- job SideBar -->
+                    <div class="post-sidebar">
+                        <h5><i data-feather="arrow-down-circle"></i>Navigation</h5>
+                        <ul class="sidebar-menu">
+                            <li><a>Job Title</a></li>
+                            <li><a>Job Summary</a></li>
+                            <li><a>Job Description</a></li>
+                            <li><a>About Company</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fun Facts -->
+<div class="padding-top-90 padding-bottom-60 fact-bg">
+    <div class="container">
+        <div class="row fact-items">
+            <div class="col-md-3 col-sm-6">
+                <div class="fact">
+                    <div class="fact-icon">
+                        <i data-feather="briefcase"></i>
+                    </div>
+                    <p class="fact-number"><span class="count" data-form="0" data-to="376"></span></p>
+                    <p class="fact-name">@Resource.Livejob</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="fact">
+                    <div class="fact-icon">
+                        <i data-feather="users"></i>
+                    </div>
+                    <p class="fact-number"><span class="count" data-form="0" data-to="562"></span></p>
+                    <p class="fact-name">@Resource.Candidate</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="fact">
+                    <div class="fact-icon">
+                        <i data-feather="file-text"></i>
+                    </div>
+                    <p class="fact-number"><span class="count" data-form="0" data-to="166"></span></p>
+                    <p class="fact-name">@Resource.Resume</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="fact">
+                    <div class="fact-icon">
+                        <i data-feather="award"></i>
+                    </div>
+                    <p class="fact-number"><span class="count" data-form="0" data-to="366"></span></p>
+                    <p class="fact-name">@Resource.Companies</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

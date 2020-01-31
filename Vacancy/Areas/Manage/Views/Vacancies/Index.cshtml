@@ -1,0 +1,76 @@
+﻿@model List<Vacancy.Models.JobLang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout1.cshtml";
+    int sira = 1;
+}
+
+    <div class="page">
+        <div id="room">
+
+            <div class="header">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1><i class="fas fa-user-check"></i>Vakansiyalar bölməsi</h1>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <a href="@Url.Action("create", "vacancies")" class="btn btn-success yarat">Yeni Vakansiya Yarat</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-list">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>№</th>
+                            <th>Şəkil</th>
+                            <th>Başlıq</th>
+                            <th>Kateqoriya</th>
+                            <th>Yüklənmə Tarixi</th>
+                            <th>Açıqlama</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @(sira++)
+                                </td>
+                                <td>
+                                    <img src="~/Uploads/@item.Job.Photo" alt="" style="width:100px">
+                                </td>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    @item.Job.Category.CategoryLangs.FirstOrDefault(f => f.Status == true).Name
+                                </td>
+                                <td>
+                                    @item.Job.PublishDate.ToString("dd.MM.yyyy")
+                                </td>
+                                <td>
+                                    @if(item.Description.Length < 30)
+                                    {
+                                        @item.Description
+                                    }
+                                    else
+                                    {
+                                        @item.Description.Substring(0, 60)
+                                    }
+                                </td>
+                                <td class="d-flex flex-column">
+                                    <a href="@Url.Action("details", "vacancies", new { Area = "Manage", JobId = item.JobId })" class="btn btn-success text-white mb-1">Ətraflı</a>
+                                    <a href="@Url.Action("edit", "vacancies", new { Area = "Manage", JobId = item.JobId })" class="btn btn-primary text-white mb-1">Redaktə et</a>
+                                    <a href="@Url.Action("delete", "vacancies", new { Area = "Manage", JobId = item.JobId })" class="btn btn-danger text-white">Sil</a>
+                                </td>
+                            </tr>
+                        }x`
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

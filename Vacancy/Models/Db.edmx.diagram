@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0f3a5c4b99024518b66b7fa90872d212" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="VacancyModel.About" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="VacancyModel.Category" Width="1.5" PointX="1.5" PointY="3.125" />
+        <EntityTypeShape EntityType="VacancyModel.CategoryLang" Width="1.5" PointX="6" PointY="18.75" />
+        <EntityTypeShape EntityType="VacancyModel.Company" Width="1.5" PointX="1.5" PointY="6.25" />
+        <EntityTypeShape EntityType="VacancyModel.Contact" Width="1.5" PointX="3.75" PointY="6.25" />
+        <EntityTypeShape EntityType="VacancyModel.Experience" Width="1.5" PointX="1.5" PointY="9.625" />
+        <EntityTypeShape EntityType="VacancyModel.JobLang" Width="1.5" PointX="6" PointY="14.75" />
+        <EntityTypeShape EntityType="VacancyModel.Job" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VacancyModel.JobTypeLang" Width="1.5" PointX="6" PointY="10.75" />
+        <EntityTypeShape EntityType="VacancyModel.JobType" Width="1.5" PointX="3.75" PointY="9.125" />
+        <EntityTypeShape EntityType="VacancyModel.Language" Width="1.5" PointX="0.75" PointY="14.5" />
+        <EntityTypeShape EntityType="VacancyModel.LinkElement" Width="1.5" PointX="3" PointY="24.625" />
+        <EntityTypeShape EntityType="VacancyModel.Link" Width="1.5" PointX="3" PointY="27.375" />
+        <EntityTypeShape EntityType="VacancyModel.Location" Width="1.5" PointX="1.5" PointY="21.625" />
+        <EntityTypeShape EntityType="VacancyModel.Message" Width="1.5" PointX="5.75" PointY="3.25" />
+        <EntityTypeShape EntityType="VacancyModel.Partner" Width="1.5" PointX="5.75" PointY="6.25" />
+        <EntityTypeShape EntityType="VacancyModel.ServiceElement" Width="1.5" PointX="3" PointY="30.25" />
+        <EntityTypeShape EntityType="VacancyModel.Service" Width="1.5" PointX="3" PointY="18.625" />
+        <EntityTypeShape EntityType="VacancyModel.Subscriber" Width="1.5" PointX="7.75" PointY="3.25" />
+        <EntityTypeShape EntityType="VacancyModel.sysdiagram" Width="1.5" PointX="7.75" PointY="6.25" />
+        <EntityTypeShape EntityType="VacancyModel.Email" Width="1.5" PointX="9.75" PointY="3.25" />
+        <AssociationConnector Association="VacancyModel.FK_Abouts_Languages" />
+        <AssociationConnector Association="VacancyModel.FK_CategoryLangs_Categories" />
+        <AssociationConnector Association="VacancyModel.FK_Jobs_Categories" />
+        <AssociationConnector Association="VacancyModel.FK_CategoryLangs_Languages" />
+        <AssociationConnector Association="VacancyModel.FK_Jobs_Companies" />
+        <AssociationConnector Association="VacancyModel.FK_Jobs_Experiences" />
+        <AssociationConnector Association="VacancyModel.FK_JobLangs_Jobs" />
+        <AssociationConnector Association="VacancyModel.FK_JobLangs_Languages" />
+        <AssociationConnector Association="VacancyModel.FK_Jobs_JobTypes" />
+        <AssociationConnector Association="VacancyModel.FK_Jobs_Location" />
+        <AssociationConnector Association="VacancyModel.FK_JobTypeLangs_JobTypes" />
+        <AssociationConnector Association="VacancyModel.FK_JobTypeLangs_Languages" />
+        <AssociationConnector Association="VacancyModel.FK_LinkElements_Languages" />
+        <AssociationConnector Association="VacancyModel.FK_Links_Languages" />
+        <AssociationConnector Association="VacancyModel.FK_ServiceElements_Languages" />
+        <AssociationConnector Association="VacancyModel.FK_Services_Languages" />
+        <EntityTypeShape EntityType="VacancyModel.Admin" Width="1.5" PointX="8.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
